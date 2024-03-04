@@ -1,0 +1,18 @@
+version: "3.8"
+
+networks:
+ translate_app:
+
+services:
+ nextjs:
+  build:
+   context: .
+   dockerfile: ./docker/node/Dockerfile
+  image: nextjs
+  container_name: nextjs_translate-app
+  ports:
+   - "3000:3000"
+  volumes:
+   - ./:/app
+  networks:
+   - translate_app
